@@ -1,0 +1,19 @@
+spring:  
+  application:
+    name: consul-auth-service
+  cloud:
+    consul:
+      host: hadoopnode3
+      port: 8500
+      discovery:
+        serviceName: consul-auth-service
+        instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port} #实例ID
+        health-check-path: /actuator/health                                                      #健康检查
+        health-check-interval: 10s
+        prefer-ip-address: true
+        #ip-address: 10.2.1.63
+        #register-health-check: true
+        health-check-critical-timeout: 2m
+      token: ${SPRING_CLOUD_CONSUL_TOKEN:245d0a09-7139-bbea-aadc-ff170a0562b1}
+      
+#如果您使用Spring Cloud Consul Config，上述值将需要放置在bootstrap.yml而不是application.yml中。

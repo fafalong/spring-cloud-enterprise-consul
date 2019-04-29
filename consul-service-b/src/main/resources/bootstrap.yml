@@ -1,0 +1,29 @@
+ 
+# document: https://docs.spring.io/spring-security-oauth2-boot/docs/current-SNAPSHOT/reference/htmlsingle/
+
+security:
+  oauth2:
+    client:
+      clientId: service-b #clientId from OAUTH2 definition in db
+      clientSecret: ${SVCB_CLIENT_SECRET_OAUTH2:password} 
+      accessTokenUri: http://${authserver.hostname}:${authserver.port}${authserver.contextPath}/oauth/token
+      grant-type: client_credentials
+      scope: server
+
+spring:  
+  application:
+    name: consul-service-b
+  cloud:
+    consul:
+      host: hadoopnode3
+      port: 8500
+      discovery:
+        serviceName: consul-service-b
+        instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port} #实例ID
+        health-check-path: /actuator/health                                                      #健康检查
+        health-check-interval: 10s
+        prefer-ip-address: true
+        #ip-address: 10.2.1.63
+        #register-health-check: true
+        #health-check-critical-timeout: 2m
+      token: ${SPRING_CLOUD_CONSUL_TOKEN:245d0a09-7139-bbea-aadc-ff170a0562b1}

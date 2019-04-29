@@ -1,0 +1,39 @@
+ 
+# document: https://docs.spring.io/spring-security-oauth2-boot/docs/current-SNAPSHOT/reference/htmlsingle/
+
+security:
+  oauth2:
+    client:
+      clientId: service-a  #clientId from OAUTH2 definition in db
+      clientSecret: ${SVCA_CLIENT_SECRET_OAUTH2:password} 
+      accessTokenUri: http://${authserver.hostname}:${authserver.port}${authserver.contextPath}/oauth/token
+      grant-type: client_credentials,password
+      scope: server
+
+spring:  
+  profiles:
+    active: consul-dev  #consul 配置key profile
+  application:
+    name: consul-service-a
+  cloud:
+    consul:
+      host: hadoopnode3
+      port: 8500
+      discovery:
+        serviceName: consul-service-a
+        instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port} #实例ID
+        health-check-path: /actuator/health                                                      #健康检查
+        health-check-interval: 10s
+        prefer-ip-address: true
+        #ip-address: 10.2.1.63
+        #register-health-check: true
+        #health-check-critical-timeout: 2m
+      token: ${SPRING_CLOUD_CONSUL_TOKEN:245d0a09-7139-bbea-aadc-ff170a0562b1}
+      config:
+        enabled: true #设置config是否启用，默认为true
+        format: yaml   #设置配置的值的格式，可以yaml和properties        
+        prefix: config     #目录，比如config
+        profile-separator: ':'    #配置分隔符,默认为‘,’
+        data-key: data  #为应用配置的key名字，值为整个应用配置的字符串
+        
+        #defaultContext 设置默认的配置，被所有的应用读取，本例子没用的

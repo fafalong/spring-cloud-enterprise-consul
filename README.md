@@ -19,3 +19,22 @@
 * Feign
 * Spring Cloud OAuth2 
 
+#screenshots
+![Summary](./screenshots/SC-ARCH-SUMMARY.png) 
+![Consul Server](./screenshots/consul_console_with_acl.png) 
+![Zipkin](./screenshots/consul_zipkin_svcs.png) 
+![hystrix-dashbord-turbine](./screenshots/hystrix-dashbord-turbine.png) 
+![JMeter Testing](./screenshots/jmeter_testing.png) 
+
+
+
+
+# consul list
+```
+[root@hadoopnode3 ~]# consul members -http-addr=10.0.0.8:8500
+Node     Address            Status  Type    Build  Protocol  DC   Segment
+node104  10.0.0.104:8301  alive   server  1.4.4  2         dc1  <all>
+node19   10.0.0.19:8301     alive   server  1.4.4  2         dc1  <all>
+node9    10.0.0.9:8301     alive   server  1.4.4  2         dc1  <all>
+node8   10.0.0.8:8301     alive   client  1.4.4  2         dc1  <default>
+```
