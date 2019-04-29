@@ -19,12 +19,12 @@
 * Feign
 * Spring Cloud OAuth2 
 
-#screenshots
-![Summary](./screenshots/SC-ARCH-SUMMARY.png) 
-![Consul Server](./screenshots/consul_console_with_acl.png) 
-![Zipkin](./screenshots/consul_zipkin_svcs.png) 
-![hystrix-dashbord-turbine](./screenshots/hystrix-dashbord-turbine.png) 
-![JMeter Testing](./screenshots/jmeter_testing.png) 
+# screenshots
+![Summary](./screenshots/SC-ARCH-SUMMARY.jpg) 
+![Consul Server](./screenshots/consul_console_with_acl.jpg) 
+![Zipkin](./screenshots/consul_zipkin_svcs.jpg) 
+![hystrix-dashbord-turbine](./screenshots/hystrix-dashbord-turbine.jpg) 
+![JMeter Testing](./screenshots/jmeter_testing.jpg) 
 
 
 
