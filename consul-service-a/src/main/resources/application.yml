@@ -25,7 +25,7 @@ ribbon:
 
 spring:
 #  rabbitmq:
-#    host: 10.2.3.25
+#    host: 10.0.0.5
 #    port: 5672
 #    username: test
 #    password: test123
@@ -42,13 +42,13 @@ spring:
         enabled: true #web开启sleuth功能
       
   zipkin:
-    base-url: http://${ZIPKIN-SERVER:zipkin-server}:9411      
+    base-url: http://${ZIPKIN_SERVER:zipkin-server}:9411      
 
 #totally customized vars
 #not solved, https://github.com/spring-cloud/spring-cloud-security/issues/61
 authserver:
     #hostname: auth-service
-    hostname: AUTH-SERVICE
+    hostname: ${AUTH_SERVER:auth-service}
     port: 8001
     contextPath: 
 

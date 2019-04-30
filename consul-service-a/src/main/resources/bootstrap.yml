@@ -17,7 +17,7 @@ spring:
     name: consul-service-a
   cloud:
     consul:
-      host: hadoopnode3
+      host: ${CONSUL_SERVER:hadoopnode3}
       port: 8500
       discovery:
         serviceName: consul-service-a
@@ -25,7 +25,7 @@ spring:
         health-check-path: /actuator/health                                                      #健康检查
         health-check-interval: 10s
         prefer-ip-address: true
-        #ip-address: 10.2.1.63
+        #ip-address: 192.168.1.63
         #register-health-check: true
         #health-check-critical-timeout: 2m
       token: ${SPRING_CLOUD_CONSUL_TOKEN:245d0a09-7139-bbea-aadc-ff170a0562b1}

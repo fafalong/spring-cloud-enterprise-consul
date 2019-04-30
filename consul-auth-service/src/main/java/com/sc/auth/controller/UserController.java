@@ -25,7 +25,7 @@ public class UserController {
     @Autowired
     private TokenStore tokenStore;
  
-    //[root@hadoopnode4 ~]# curl -X POST -i -H "Authorization: Bearer ed83ed7b-b5c3-49db-b28e-a55f84a686b0" http://10.2.28.8:8001/uaa/getCurrUserId
+    //[root@hadoopnode4 ~]# curl -X POST -i -H "Authorization: Bearer ed83ed7b-b5c3-49db-b28e-a55f84a686b0" http://192.168.28.8:8001/uaa/getCurrUserId
     //@PostMapping("/bar")
     @GetMapping("/getCurrUserId")
     public String bar(@RequestHeader("Authorization") String auth) {
@@ -41,7 +41,7 @@ public class UserController {
 
 
 /**
-		[root@hadoopnode4 ~]# curl -i -H "Authorization: Bearer fd69ea49-0b8a-457f-ae7b-73cdd42bff4d" http://10.2.1.63:5000/current
+		[root@hadoopnode4 ~]# curl -i -H "Authorization: Bearer fd69ea49-0b8a-457f-ae7b-73cdd42bff4d" http://192.168.1.63:5000/current
 				 {
 				    "authorities": [
 				        {
@@ -52,7 +52,7 @@ public class UserController {
 				        }
 				    ],
 				    "details": {
-				        "remoteAddress": "10.2.1.63",
+				        "remoteAddress": "192.168.1.63",
 				        "sessionId": "79393902E56F6DB115F64F98A61D9BBD",
 				        "tokenValue": "fd69ea49-0b8a-457f-ae7b-73cdd42bff4d",
 				        "tokenType": "Bearer",

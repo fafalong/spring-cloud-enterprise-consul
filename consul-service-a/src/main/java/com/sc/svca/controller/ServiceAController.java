@@ -25,7 +25,7 @@ import com.sc.svca.service.RibbonServiceBClient;
 import com.sc.svca.service.RibbonUserServiceClient;
 
 /**
- * curl -X POST -vu client:secret http://10.2.28.8:8001/oauth/token -H "Accept: application/json" -d "password=password&username=admin&grant_type=password&scope=read%20write"
+ * curl -X POST -vu client:secret http://192.168.28.8:8001/oauth/token -H "Accept: application/json" -d "password=password&username=admin&grant_type=password&scope=read%20write"
  * 
  * @author allan.chow@139.com
  *
@@ -67,7 +67,7 @@ public class ServiceAController {
 		return serviceInstance.getServiceId() + " (" + serviceInstance.getHost() + ":" + serviceInstance.getPort() + ")"
 				+ "===>name:" + msg + "<br/>";
 		
-		//consul-service-a (10.2.1.63:8901)===>name:test_string<br/>
+		//consul-service-a (192.168.1.63:8901)===>name:test_string<br/>
 
 	}
 
@@ -80,12 +80,12 @@ public class ServiceAController {
 		/**
 		 * dynamic config change on Consul
 		 * 
-			[root@hadoopnode4 sts]#  curl -i -H "Authorization: Bearer 8cb5bd5b-86c7-4f06-991c-ccc358060bfc" http://10.2.28.8:8900/svca/hi2
+			[root@hadoopnode4 sts]#  curl -i -H "Authorization: Bearer 8cb5bd5b-86c7-4f06-991c-ccc358060bfc" http://192.168.28.8:8900/svca/hi2
 			hi defName ,i am from port:8901, get consul config my.consul.val=myVal
 			
 			[updated on Consul console...]
 			
-			[root@hadoopnode4 sts]#  curl -i -H "Authorization: Bearer 8cb5bd5b-86c7-4f06-991c-ccc358060bfc" http://10.2.28.8:8900/svca/hi2
+			[root@hadoopnode4 sts]#  curl -i -H "Authorization: Bearer 8cb5bd5b-86c7-4f06-991c-ccc358060bfc" http://192.168.28.8:8900/svca/hi2
 			hi defName ,i am from port:8901, get consul config my.consul.val=myVal_new
 		 * 
 		 */
@@ -97,7 +97,7 @@ public class ServiceAController {
 	 * the name parameter must be provided when calling
 	 * 
 	 * [root@hadoopnode4 ~]# curl -i -H "Authorization: Bearer
-	 * a8914a80-c6c0-46ae-9828-2bb7c8cb521a" http://10.2.1.63:8080/hi?name=abc
+	 * a8914a80-c6c0-46ae-9828-2bb7c8cb521a" http://192.168.1.63:8080/hi?name=abc
 	 * 
 	 * @param name
 	 * @return
@@ -112,7 +112,7 @@ public class ServiceAController {
 	/**
 	 * 
 	 * [root@hadoopnode4 ~]# curl -i -H "Authorization: Bearer
-	 * 1c76f4f5-cf95-428c-ae96-c45715c8f7ae" http://10.2.1.63:8901/test
+	 * 1c76f4f5-cf95-428c-ae96-c45715c8f7ae" http://192.168.1.63:8901/test
 	 * {"status":200,"msg":"æˆåŠŸ","data":{},"perm":null}
 	 * 
 	 * @return
@@ -129,7 +129,7 @@ public class ServiceAController {
 	 * way 2 - ribbon fallback
 	 * 
 	 * [root@hadoopnode4 ~]# curl -X POST -i -H "Authorization: Bearer
-	 * 1c76f4f5-cf95-428c-ae96-c45715c8f7ae" http://10.2.1.63:8901/hitest -d
+	 * 1c76f4f5-cf95-428c-ae96-c45715c8f7ae" http://192.168.1.63:8901/hitest -d
 	 * 'name=zhou&b=2&c=3'
 	 * 
 	 * {"status":200,"msg":"æˆåŠŸ","data":{"b":"2","c":"3","name":"zhou"}}[root@hadoopnode4
@@ -150,9 +150,9 @@ public class ServiceAController {
 
 	// @GetMapping(value = "/getCurrUserId")
 	// [root@hadoopnode4 ~]# curl -i -H "Authorization: Bearer
-	// 1c76f4f5-cf95-428c-ae96-c45715c8f7ae" http://10.2.1.63:8901/getCurrUserId
+	// 1c76f4f5-cf95-428c-ae96-c45715c8f7ae" http://192.168.1.63:8901/getCurrUserId
 	// [root@hadoopnode4 ~]# curl -X POST -i -H "Authorization: Bearer
-	// 1c76f4f5-cf95-428c-ae96-c45715c8f7ae" http://10.2.1.63:8901/getCurrUserId -d
+	// 1c76f4f5-cf95-428c-ae96-c45715c8f7ae" http://192.168.1.63:8901/getCurrUserId -d
 	// 'a=1&b=2&c=3'
 	@RequestMapping(value = "/getCurrUserId")
 	public String getCurrUserId(HttpServletRequest request) {
@@ -176,7 +176,7 @@ public class ServiceAController {
 	public Object services() {
 		// 获取对应服务名称的所有实例信息
 		return discoveryClient.getInstances("consul-service-b");
-		//[{"serviceId":"consul-a","host":"10.2.1.63","port":8201,"secure":false,"metadata":{"secure":"false"},"uri":"http://10.2.1.63:8201","scheme":null}]
+		//[{"serviceId":"consul-a","host":"192.168.1.63","port":8201,"secure":false,"metadata":{"secure":"false"},"uri":"http://192.168.1.63:8201","scheme":null}]
 	}
  
 	@Autowired

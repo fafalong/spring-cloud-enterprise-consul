@@ -1,35 +1,36 @@
 version: '2'
 services:
+  #https://hub.docker.com/_/redis
   rabbitmq:
-      image: rabbitmq:3-management
+      image: redis:5.0.4
       restart: always
       ports:
-        - 15673:15672
-  registry:
-    image: spring-boot-cloud/registry
+        - 6379:6379
+  gateway:
+    image: spring-cloud/consul-gateway
     ports:
-      - "8761:8761"
-  config:
-    image: spring-boot-cloud/config
+      - "8900:8900"
+  auth-service:
+    image: spring-cloud/consul-auth-service
     ports:
-      - "8888:8888"
-  monitor:
-    image: spring-boot-cloud/monitor
+      - "8001:8001"
+  #https://hub.docker.com/r/kennedyoliveira/hystrix-dashboard
+  hystrix:
+    image: kennedyoliveira/hystrix-dashboard
     ports:
-      - "8040:8040"
+      - "7979:7979"
+  #https://hub.docker.com/r/openzipkin/zipkin
   zipkin:
-    image: spring-boot-cloud/zipkin
+    image: openzipkin/zipkin
     ports:
       - "9411:9411"
-  gateway:
-    image: spring-boot-cloud/gateway
-    ports:
-      - "8060:8060"
-  auth-service:
-    image: spring-boot-cloud/auth-service
-    ports:
-      - "5000:5000"
+  
+  
   service-a:
-    image: spring-boot-cloud/service-a
+    image: spring-cloud/consul-service-a
+    ports:
+      - "8901:8901"
   service-b:
-    image: spring-boot-cloud/service-b
+    image: spring-cloud/consul-service-b
+    ports:
+      - "8902:8902"

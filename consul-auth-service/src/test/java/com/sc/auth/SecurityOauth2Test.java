@@ -31,7 +31,7 @@ public class SecurityOauth2Test {
 	private static final Logger log = LoggerFactory.getLogger(SecurityOauth2Test.class);
 	
     //端口
-	final static String HOST = "10.2.28.8";
+	final static String HOST = "192.168.28.8";
     final static long PORT = 8001;
     //clientId
     final static String CLIENT_ID = "client";

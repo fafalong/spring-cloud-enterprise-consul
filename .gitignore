@@ -5,4 +5,3 @@ target/
 .settings/
 .project
 .classpath
-Dockerfile

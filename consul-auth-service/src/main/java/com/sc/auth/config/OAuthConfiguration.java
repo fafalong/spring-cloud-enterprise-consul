@@ -119,16 +119,16 @@ public class OAuthConfiguration extends AuthorizationServerConfigurerAdapter {
 		
 		/**
 		 * 
-		 [root@hadoopnode4 ~]# curl -X POST -vu client:secret http://10.2.1.63:5000/oauth/token -H "Accept: application/json" -d "password=password&username=admin&grant_type=password&scope=read%20write"
+		 [root@hadoopnode4 ~]# curl -X POST -vu client:secret http://192.168.1.63:5000/oauth/token -H "Accept: application/json" -d "password=password&username=admin&grant_type=password&scope=read%20write"
 			{"access_token":"fd69ea49-0b8a-457f-ae7b-73cdd42bff4d","token_type":"bearer","refresh_token":"66906acf-f701-4542-b8ca-33213c7958cf","expires_in":3560,"scope":"read write"}
 		 
-		 curl -X POST -vu client:secret http://10.2.1.63:5000/oauth/token?grant_type=refresh_token&refresh_token=66906acf-f701-4542-b8ca-33213c7958cf
+		 curl -X POST -vu client:secret http://192.168.1.63:5000/oauth/token?grant_type=refresh_token&refresh_token=66906acf-f701-4542-b8ca-33213c7958cf
 		 
 		 on browsers: auto redirect to login page:
-		 http://10.2.1.63:5000/oauth/authorize?response_type=code&client_id=client_code&redirect_uri=http://www.baidu.com&scope=app
+		 http://192.168.1.63:5000/oauth/authorize?response_type=code&client_id=client_code&redirect_uri=http://www.baidu.com&scope=app
 		 
 		 
-		 [root@hadoopnode4 ~]# curl -X POST -vu service-a:password http://10.2.1.63:5000/oauth/token -d "client_id=service-a&scopes=server&grant_type=client_credentials&client_secret=password"
+		 [root@hadoopnode4 ~]# curl -X POST -vu service-a:password http://192.168.1.63:5000/oauth/token -d "client_id=service-a&scopes=server&grant_type=client_credentials&client_secret=password"
              {"access_token":"563b6ecf-271a-42d1-a2f8-0e59cf9e7746","token_type":"bearer","expires_in":2591908,"scope":"server"}
              
              
